@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/54f0cb7e4a.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="image/logo2-removebg-preview - Copy.png">
+    <link rel="stylesheet" href="mainstyle.css">
+    <title>Coffe Bằng Lăng</title>
+</head>
+<style>
+     :root {
+        --main-text-font: Arial, Helvetica, sans-serif;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .space-between {
+        justify-content: space-between;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+    
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .top {
+        padding: 12px 0;
+        align-items: center;
+        display: block;
+        position: fixed;
+        width: 100%;
+        z-index: 999;
+        background-color: rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .top.active {
+        background-color: rgba(255, 255, 255, 1);
+    }
+    
+    .top:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+    
+    .top-logo {
+        flex: 1;
+    }
+    
+    .top-menu-items {
+        flex: 3;
+    }
+    
+    .top-menu-items>ul {
+        height: 100%;
+        display: flex;
+    }
+    
+    .top-menu-items>ul>li {
+        font-family: var(--main-text-font);
+        padding: 0 12px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .top-menu-items ul li::before {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 50px;
+        bottom: -50%;
+    }
+    
+    .top-menu-item {
+        position: absolute;
+        width: 200px;
+        top: 100px;
+        display: none;
+        opacity: 0;
+        transition: all 0.5s ease;
+        background-color: #ffff;
+        height: auto!important;
+        padding: 6px;
+        border: 1px solid #dddddd;
+    }
+    
+    .top-menu-items ul li:hover .top-menu-item {
+        display: block;
+        top: 60px;
+        opacity: 1;
+    }
+    
+    .top-menu-item li {
+        line-height: 25px;
+        display: flex;
+        justify-content: left!important;
+    }
+    
+    .top-menu-item li a {
+        font-size: 12px;
+        text-align: left;
+        text-transform: capitalize;
+        color: #333;
+        font-family: var(--main-text-font);
+    }
+    /* top-menu-icons */
+    
+    .top-menu-icons {
+        flex: 1;
+    }
+    
+    .top-menu-icons ul {
+        display: flex;
+        height: 100%;
+    }
+    
+    .top-menu-icons ul li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 12px;
+    }
+    
+    .top-menu-icons ul li {
+        position: relative;
+    }
+    
+    .top-menu-icons ul li::before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 15px;
+        width: 1px;
+        background-color: #333;
+        right: 0;
+    }
+    
+    .top-menu-icons ul li:last-child::before {
+        display: none;
+    }
+    
+    .top-menu-icons ul li:first-child input {
+        width: 150px;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #333;
+        padding: 0 0 4px 6px
+    }
+    
+    .top-menu-icons ul li:first-child i {
+        position: absolute;
+        font-size: 12px;
+        right: 12px;
+    }
+    
+    .top-menu-icons ul i {
+        cursor: pointer;
+    }
+    /* ..................Slider....................... */
+    
+    .sliders {
+        padding-bottom: 20px;
+        overflow: hidden;
+        width: 100vw;
+    }
+    
+    .aspect-ratio-169 {
+        display: block;
+        position: relative;
+        padding-top: 56.25%;
+        transition: all 0.3s ease;
+    }
+    
+    .aspect-ratio-169 img {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    
+    .dot-container {
+        /* position: absolute; */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 6px;
+    }
+    
+    .dot {
+        width: 15px;
+        height: 15px;
+        background-color: #cccccc;
+        border-radius: 50%;
+        margin-right: 12px;
+        cursor: pointer;
+    }
+    
+    .active {
+        background-color: #333333;
+    }
+    /* -------------footer */
+    
+    .footer {
+        padding: 100px 0 0;
+        border-top: 2px solid black;
+    }
+    
+    .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .footer-container p {
+        font-weight: bold;
+        font-size: 18px;
+        font-family: var(--main-text-font);
+    }
+    
+    .app-google {
+        margin: 25px 0;
+    }
+    
+    .app-google img {
+        width: 150px;
+        cursor: pointer;
+    }
+    
+    .input-email {
+        position: relative;
+        width: 300px;
+        margin: auto;
+        margin-top: 30px;
+    }
+    
+    .input-email input {
+        width: 100%;
+        border: none;
+        padding-bottom: 12px;
+        border-bottom: 1px solid black;
+        text-align: center;
+    }
+    
+    .input-email i {
+        position: absolute;
+        right: 12px;
+        bottom: 6px;
+    }
+    
+    .footer-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+    }
+    
+    .footer-items li {
+        padding: 12px;
+        position: relative;
+    }
+    
+    .footer-items li a {
+        color: #333;
+        font-family: var(--main-text-font);
+        font-weight: bold;
+        font-size: 12px;
+    }
+    
+    .footer-items li::after {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 50%;
+        background-color: #cccccc;
+        right: 0;
+    }
+    
+    .footer-items li:last-child::after {
+        display: none;
+    }
+    
+    .footer-items li:last-child i {
+        font-size: 12px;
+        margin-right: 12px;
+        color: #333333;
+    }
+    
+    .footer-items li:last-child i:hover {
+        color: black;
+    }
+    
+    .footer-items img {
+        width: 100px;
+    }
+    
+    .footer-text {
+        text-align: center;
+        font-size: 12px;
+        font-family: var(--main-text-font);
+    }
+    
+    .footer-bottom {
+        padding: 10px 0;
+        font-size: 12px;
+        font-family: var(--main-text-font);
+        background-color: #dddddd;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+    }
+    
+    #Slider {
+        padding-bottom: 30px;
+        border-bottom: 2px solid #333;
+        overflow: hidden;
+    }
+    
+    .aspect-ratio-169 {
+        display: block;
+        position: relative;
+        padding-top: 56.25%;
+        transition: 0.3s;
+    }
+    
+    .aspect-ratio-169 img {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    
+    .dot {
+        height: 16px;
+        width: 16px;
+        background-color: #ccc;
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+    
+    .dot.active {
+        background-color: #333;
+    }
+    /* ----------------------Cartegory------------------------------------------------------- */
+</style>
+
+<body>
+    <secsion class="top">
+        <div class="container">
+            <div class="row">
+                <div class="top-logo">
+                    <a href="index.html"><img src="image/logo2-removebg-preview - Copy.png" alt=""></a>
+
+                </div>
+                <div class="top-menu-items">
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <p style="color: red;"> Home</p>
+                            </a>
+                        </li>
+                        <li><a href="">Shop</a>
+                            <ul class="top-menu-item">
+                                <li>
+                                    <a href="shop-cafe.html">Caffe & Nước trái cây</a>
+                                </li>
+                                <li>
+                                    <a href="shop-cake.html">Bánh ngọt</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li><a href="">Trò Chuyện Cùng Cafee sáng</a>
+                            <ul class="top-menu-item">
+                                <li>
+                                    <a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/">Coffe</a>
+                                </li>
+                                <li>
+                                    <a href="../coffebanglang _html/html/bindex.html">Blog</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="top-menu-icons">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="tìm kiếm">
+                            <i class="fas fa-search"></i>
+                        </li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-user"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </secsion>
+    <!-- -----------------------SLlDER---------------------------------------------- -->
+    <section class="sliders">
+        <div class="aspect-ratio-169">
+            <img src="image/1.jpg" alt="">
+            <img src="image/2.jpg" alt="">
+            <img src="image/3.jpg" alt="">
+            <img src="image/4.jpg" alt="">
+            <img src="image/5.jpg" alt="">
+        </div>
+        <div class="dot-container">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+    <!-- -------------------------Footer -->
+    <section class="footer">
+        <div class="footer-container">
+            <p>Đặt Hàng Qua Ứng Dụng</p>
+            <div class="app-google">
+                <a href="https://shopeefood.vn/" target="_blank"><img src="image/ap3.png">&nbsp;
+                    <a href="https://gofood.vn/?gclid=CjwKCAiA5t-OBhByEiwAhR-hmzDLzPcshc_OuqCvVPkxtqEfP4WauHXTCPa-0V0xnQc560ZKuYON-hoCUpUQAvD_BwE" target="_blank"><img src="image/ap5.png">&nbsp;
+                        <a href="https://food.grab.com/vn/vi/" target="_blank"><img src="image/ap4.png">
+
+            </div>
+
+            <div class="input-email">
+                <input type="text" placeholder="Nhập email của bạn">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="footer-items">
+                <li>
+                    <a href="https://moit.gov.vn/" target="_blank"><img src="image/ap1.png" alt=""></a>
+                </li>
+                <li><a href="https://www.facebook.com/groups/1755109981352922/about" target="_blank">Liên hệ</a></li>
+                <li><a href="https://www.facebook.com/groups/1755109981352922/permalink/1755121731351747/" target="_blank">Tuyển dụng</a></li>
+                <li><a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/" target="_blank">Giới thiệu</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100071150346233" target="blank"><i class="fab fa-facebook-f"></i></a><a href="https://www.youtube.com/channel/UCPF14dnIoGPbIVn0SLtYjIg" target="blank"><i class="fab fa-youtube"></i></a></li>
+            </div>
+            <div class="footer-text">
+                Quán Coffe Bằng Lăng kính chào quý khách gẩn xa <br> Địa chỉ đăng ký: Tổ dân phố Tháp, P.Đại Mỗ, Q.Nam Từ Liêm, TP.Hà Nội, Việt Nam - 037 487 6364 <br> Đặt hàng online : 037 487 6364 .
+            </div>
+            <div class="footer-bottom">
+                ©CoffeBangLang
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    const imgItem = document.querySelectorAll(".aspect-ratio-169 img")
+    const imgItemContainer = document.querySelector(".aspect-ratio-169")
+    const dotItem = document.querySelectorAll(".dot")
+    let index = 0;
+    let imgLeng = imgItem.length
+    imgItem.forEach(function(image, index) {
+        image.style.left = index * 100 + "%"
+        dotItem[index].addEventListener("click", function() {
+            slideRun(index)
+        })
+    })
+
+    function slider() {
+        index++;
+        if (index >= imgLeng) {
+            index = 0;
+        }
+        slideRun(index)
+    }
+
+    function slideRun(index) {
+        imgItemContainer.style.left = "-" + index * 100 + "%"
+        const dotActive = document.querySelector(".active")
+        dotActive.classList.remove("active")
+        dotItem[index].classList.add("active");
+    }
+    setInterval(slider, 3000)
+    const toP = document.querySelector(".top")
+    window.addEventListener("scroll", function() {
+        const X = this.pageYOffset;
+        if (X > 1) {
+            toP.classList.add("active")
+        } else {
+            toP.classList.remove("active")
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <script src="http://kit.fontawesome.com/1147679ae7.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="image/logo2-removebg-preview - Copy.png">
+    <title> Coffe Bằng Lăng </title>
+</head>
+<style>
+     :root {
+        --main-text-font: Arial, Helvetica, sans-serif;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .space-between {
+        justify-content: space-between;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+    
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .top {
+        padding: 12px 0;
+        align-items: center;
+        display: block;
+        position: fixed;
+        width: 100%;
+        z-index: 999;
+        background-color: rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .top.active {
+        background-color: rgba(255, 255, 255, 1);
+    }
+    
+    .top:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+    
+    .top-logo {
+        flex: 1;
+    }
+    
+    .top-menu-items {
+        flex: 3;
+    }
+    
+    .top-menu-items>ul {
+        height: 100%;
+        display: flex;
+    }
+    
+    .top-menu-items>ul>li {
+        font-family: var(--main-text-font);
+        padding: 0 12px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .top-menu-items ul li::before {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 50px;
+        bottom: -50%;
+    }
+    
+    .top-menu-item {
+        position: absolute;
+        width: 200px;
+        top: 100px;
+        display: none;
+        opacity: 0;
+        transition: all 0.5s ease;
+        background-color: #ffff;
+        height: auto!important;
+        padding: 6px;
+        border: 1px solid #dddddd;
+    }
+    
+    .top-menu-items ul li:hover .top-menu-item {
+        display: block;
+        top: 60px;
+        opacity: 1;
+    }
+    
+    .top-menu-item li {
+        line-height: 25px;
+        display: flex;
+        justify-content: left!important;
+    }
+    
+    .top-menu-item li a {
+        font-size: 12px;
+        text-align: left;
+        text-transform: capitalize;
+        color: #333;
+        font-family: var(--main-text-font);
+    }
+    /* top-menu-icons */
+    
+    .top-menu-icons {
+        flex: 1;
+    }
+    
+    .top-menu-icons ul {
+        display: flex;
+        height: 100%;
+    }
+    
+    .top-menu-icons ul li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 12px;
+    }
+    
+    .top-menu-icons ul li {
+        position: relative;
+    }
+    
+    .top-menu-icons ul li::before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 15px;
+        width: 1px;
+        background-color: #333;
+        right: 0;
+    }
+    
+    .top-menu-icons ul li:last-child::before {
+        display: none;
+    }
+    
+    .top-menu-icons ul li:first-child input {
+        width: 150px;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #333;
+        padding: 0 0 4px 6px
+    }
+    
+    .top-menu-icons ul li:first-child i {
+        position: absolute;
+        font-size: 12px;
+        right: 12px;
+    }
+    
+    .top-menu-icons ul i {
+        cursor: pointer;
+    }
+    /*-----------------------------------------------------app---------------------------------------------*/
+    
+    .app-container {
+        text-align: center;
+        align-items: center;
+        padding: 150px 0 50px 0;
+    }
+    
+    .app-google {
+        margin: 50px;
+    }
+    
+    .app-google img {
+        height: 150px;
+    }
+    
+    .app-container p {
+        line-height: 20px;
+        letter-spacing: 1px;
+        font-size: 17px;
+        color: #000;
+        font-weight: bold;
+    }
+    
+    .app-container input {
+        margin-top: 50px;
+        border: none;
+        border-bottom: 1px solid #000;
+        padding-bottom: 20px;
+        width: 400px;
+        text-align: center;
+        outline: none;
+    }
+    /*-----------------------------------------------------footer---------------------------------------------*/
+    
+    footer {
+        text-align: center;
+    }
+    
+    .footer-top {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        height: 70px;
+    }
+    
+    .footer-top img {
+        height: 50px;
+    }
+    
+    .footer-top li {
+        padding: 0 12px;
+        position: relative;
+    }
+    
+    .footer-top li::after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 80%;
+        background: #333;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .footer-top li:last-child::after {
+        display: none;
+    }
+    
+    .footer-top li:last-child a {
+        margin: 12px;
+        color: #ccc;
+    }
+    
+    .footer-text {
+        text-align: center;
+    }
+    
+    .footer-bottom {
+        margin: 20px 0;
+        text-align: center;
+        background-color: #ccc;
+    }
+    
+    .ss1 {
+        font-size: 12px;
+    }
+    /*-------------------------------------------------------------category-------------------------------------*/
+    
+    .cartegory {
+        padding: 100px 0 0;
+    }
+    
+    .cartegory-top {
+        margin-bottom: 50px;
+    }
+    
+    .cartegory-top p {
+        font-family: var(--main-text-font);
+        margin: 0 12px;
+        font-size: 12px;
+    }
+    
+    .cartegory-left {
+        width: 20%;
+    }
+    
+    .cartegory-right {
+        width: 80%;
+    }
+    
+    .cartegory-right-top-item:first-child {
+        flex: 2;
+        font-size: 16px;
+        font-family: var(--main-text-font);
+        font-weight: bold;
+    }
+    
+    .cartegory-right-top-item {
+        flex: 1;
+        padding: 0 12px;
+    }
+    
+    .cartegory-right-top-item button {
+        width: 100%;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        border: 1px solid #dddddd;
+        cursor: pointer;
+    }
+    
+    .cartegory-right-top-item select {
+        width: 100%;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        border: 1px solid #dddddd;
+        cursor: pointer;
+    }
+    
+    .cartegory-right-content {
+        margin-top: 20px;
+        justify-content: space-between;
+    }
+    
+    .cartegory-right-content-item {
+        width: calc(25% - 12px);
+        text-align: center;
+        padding: 12px 0;
+    }
+    
+    .cartegory-right-content-item h1 {
+        font-size: 12px;
+        font-family: var(--main-text-font);
+        margin-top: 16px;
+        color: #333;
+    }
+    
+    .cartegory-right-content-item img {
+        width: 100%;
+    }
+    
+    .cartegory-right-content-item p {
+        font-size: 12px;
+    }
+    
+    .cartegory-right-bottom {
+        justify-content: space-between;
+        margin: 30px 0 20px;
+        width: 100%;
+    }
+    
+    .cartegory-right-bottom p {
+        font-family: var(--main-text-font);
+        font-size: 11px;
+    }
+    
+    .cartegory-left ul li {
+        padding: 12px 0;
+    }
+    
+    .cartegory-left ul li>a {
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: var(--main-text-font);
+    }
+    
+    .cartegory-left ul li ul li {
+        padding-left: 10px;
+    }
+    
+    .cartegory-left li ul {
+        display: none;
+    }
+    
+    .cartegory-left-li.block ul {
+        display: block;
+    }
+    
+    .cartegory-left ul li ul li a {
+        color: #333333;
+        font-size: 12px;
+    }
+    
+    .dot-container {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .dot {
+        height: 16px;
+        width: 16px;
+        background-color: #ccc;
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+    
+    .dot.active {
+        background-color: #333;
+    }
+</style>
+
+<body>
+    <secsion class="top">
+        <div class="container">
+            <div class="row">
+                <div class="top-logo">
+                    <a href="index.html"><img src="image/logo2-removebg-preview - Copy.png" alt=""></a>
+                </div>
+                <div class="top-menu-items">
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <p> Home</p>
+                            </a>
+                        </li>
+                        <li>
+                            <p style="color: red;">Shop </p>
+                            <ul class="top-menu-item">
+                                <li>
+                                    <a href="shop-cafe.html">Caffe & Nước trái cây</a>
+                                </li>
+                                <li>
+                                    <a href="shop-cake.html">Bánh ngọt</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li><a href="">Trò Chuyện Cùng Cafee sáng</a>
+                            <ul class="top-menu-item">
+                                <li>
+                                    <a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/">Coffe</a>
+                                </li>
+                                <li>
+                                    <a href="../coffebanglang _html/html/bindex.html">Blog</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/">
+                                <p> Liên Hệ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="top-menu-icons">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="tìm kiếm">
+                            <i class="fas fa-search"></i>
+                        </li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-user"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </secsion>
+    <!----------------------------------------------------------------app------------------------------------------>
+    <section class="cartegory">
+        <div class="container">
+            <br>&nbsp;
+            <br>
+            <div class="cartegory-top row">
+                <p><a href="index.html">Trang Chủ</a></p><span>&rarr;</span>
+                <p><a href="shop-cafe.html">Shop</a></p><span>&rarr;</span>
+                <p><a href="shop-cake.html">Bánh ngọt</a></p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="cartegory-left">
+                    <ul>
+                        <li class="cartegory-left-li"><a href="shop-cafe.html">Caffee</a>
+                        </li>
+                        <li class="cartegory-left-li">
+                            <a href="shop-cake.html">
+                                <p style="color: red;"> Bánh ngọt</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cartegory-right row">
+                    <div class="cartegory-right-top-item">
+                        <p>Bánh Ngọt</p>
+                    </div>
+                    <div class="cartegory-right-top-item">
+                    </div>
+                    <div class="cartegory-right-top-item">
+                        <select name="" id="">
+                            <option value="">Sắp xếp</option>
+                            <option value="">Giá cao đến thấp</option>
+                            <option value="">Giá thấp đến cao</option>
+                        </select>
+                    </div>
+                    <div class="cartegory-right-content row">
+                        <div class="cartegory-right-content-item">
+                            <a href="cake-1.html"><img src="image/pl.jpg" alt=""></a>
+                            <a href="cake-1.html">
+                                <h1 style="text-align: center;">Bánh flan</h1>
+                            </a>
+                            <p style="text-align: center;">30.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <a href="cake-2.html"><img src="image/tmta1.jpg" alt=""></a>
+                            <a href="cake-2.html">
+                                <h1 style="text-align: center;">Tiramisu</h1>
+                            </a>
+                            <p style="text-align: center;">150.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+
+                            <a href="cake-3.html"><img src="image/ck.jpg" alt=""></a>
+                            <a href="cake-3.html">
+                                <h1 style="text-align: center;">Bánh Cookies</h1>
+                            </a>
+                            <p style="text-align: center;">60.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+
+                            <a href="cake-4.html"><img src="image/mcr.jpg" alt=""></a>
+                            <a href="cake-4.html">
+                                <h1 style="text-align: center;">Macaron</h1>
+                            </a>
+
+                            <p style="text-align: center;">120.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+
+                            <a href="cake-5.html"> <img src="image/mck.jpg" alt=""></a>
+                            <a href="cake-5.html">
+                                <h1 style="text-align: center;">Mousse cake</h1>
+                            </a>
+
+                            <p style="text-align: center;">170.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+
+                            <a href="cake-6.html"><img src="image/c-m.jpg" alt=""></a>
+                            <a href="cake-6.html">
+                                <h1 style="text-align: center;">Muffin và cupcake</h1>
+                            </a>
+
+                            <p style="text-align: center;">350.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+
+                            <a href="cake-7.html"><img src="image/ct.jpg" alt=""></a>
+                            <a href="cake-7.html">
+                                <h1 style="text-align: center;">Chocolate tart</h1>
+                            </a>
+                            <p style="text-align: center;">250.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+
+                            <a href="cake-8.html"> <img src="image/ktc.jpg" alt=""></a>
+                            <a href="cake-8.html">
+                                <h1 style="text-align: center;">Kem trái cây thập cẩm</h1>
+                            </a>
+                            <p style="text-align: center;">50.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+
+                            <a href="cake-9.html"> <img src="image/ch-cake.jpg" alt=""></a>
+                            <a href="cake-9.html">
+                                <h1 style="text-align: center;">Cheesecake</h1>
+                            </a>
+
+                            <p style="text-align: center;">340.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+
+                            <a href="cake-10.html"> <img src="image/hw.jpg" alt=""></a>
+                            <a href="cake-10.html">
+                                <h1 style="text-align: center;">Hummus wrap</h1>
+                            </a>
+
+                            <p style="text-align: center;">240.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <a href="cake-11.html"><img src="image/nm-c.jpg" alt=""></a>
+                            <a href="cake-11.html">
+                                <h1 style="text-align: center;">Nama Chocolate </h1>
+                            </a>
+
+
+                            <p style="text-align: center;">180.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <a href="cake-12.html"><img src="image/pc.jpg" alt=""></a>
+                            <a href="cake-12.html">
+                                <h1 style="text-align: center;">Pana Cotta</h1>
+                            </a>
+
+
+                            <p style="text-align: center;">530.000<sup>đ</sup></p>
+                        </div>
+                    </div>
+                    <div class="cartegory-right-bottom row">
+                        <div class="cartegory-right-bottom-item">
+                            <p>Hiển Thị 1 <span>|</span> 4 Sản Phẩm</p>
+                        </div>
+                        <div class="cartegory-right-bottom-item">
+                            <p><a href=""><span>&#171;</span></a> <a href=""><u>1</u></a> <a href="">2</a> <a href="">3</a> <a href="">4</a>
+                                <a href="">5</a> <a href=""><span>&#187;</span></a> <a href="">Trang Cuối</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <hr>
+    <!----------------------------------------------------------------app------------------------------------------>
+    <section class="app-container">
+        <p>Đặt Hàng Qua Nền Tảng</p>
+        <div class="app-google">
+            <a href="https://shopeefood.vn/" target="_blank"><img src="image/ap3.png">&nbsp;
+                <a href="https://food.grab.com/vn/vi/" target="_blank"><img src="image/ap4.png">&nbsp;
+                    <a href="https://gofood.vn/?gclid=CjwKCAiA5t-OBhByEiwAhR-hmzDLzPcshc_OuqCvVPkxtqEfP4WauHXTCPa-0V0xnQc560ZKuYON-hoCUpUQAvD_BwE" target="_blank"><img src="image/ap5.png">&nbsp;
+        </div>
+        <p>Nhận Thông Báo Khuyến Mãi</p>
+        <input type="text" placeholder="Vui Lòng Nhập Gmail Của Bạn ...">
+
+    </section>
+    <!----------------------------------------------------------------footer------------------------------------------>
+    <div class="footer-top">
+        <li>
+            <a href="https://moit.gov.vn/" target="_blank"><img src="image/ap1.png" alt=""></a>
+        </li>
+        <li><a href="https://www.facebook.com/groups/1755109981352922/about" target="_blank">Liên hệ</a></li>
+        <li><a href="https://www.facebook.com/groups/1755109981352922/permalink/1755121731351747/" target="_blank">Tuyển dụng</a></li>
+        <li><a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/" target="_blank">Giới thiệu</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100071150346233" target="blank"><i class="fab fa-facebook-f"></i></a><a href="https://www.youtube.com/channel/UCPF14dnIoGPbIVn0SLtYjIg" target="blank"><i class="fab fa-youtube"></i></a></li>
+    </div>
+    <div class="footer-text">
+        <p>
+            Quán Caffee Bằng Lăng Kính Chào Các Quý Khách Gần Xa Đã Ghé Thăm Và Ủng Hộ Quán Chúng Tôi ! Xin Chân Thành Cảm Ơn !.<br> Thời Gian Hoạt Động : Thứ 2- Thứ 7 (6h00-23h00). <br> Số Điện Thoại Liên Hệ : <span>037 487 6364.</span>
+        </p>
+    </div>
+    <div class="footer-bottom">
+        @MadeIn Việt Nam.Chất Lượng Cao !
+    </div>
+</body>
+<script>
+    const header = document.querySelector("header")
+    window.addEventListener("scroll", function() {
+            x = window.pageYOffset
+            if (x > 0) {
+                header.classList.add("sticky")
+            } else {
+                header.classList.remove("sticky")
+            }
+        })
+        //--------------------------------Menu slider----------------------------------
+    const itemsliderbar = document.querySelectorAll(".cartegory-left-li")
+    itemsliderbar.forEach(function(menu, index) {
+        menu.addEventListener("click", function() {
+            menu.classList.toggle("block")
+        })
+    })
+</script>
+
+</html>

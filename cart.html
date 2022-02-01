@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/54f0cb7e4a.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="image/logo2-removebg-preview - Copy.png">
+    <link rel="stylesheet" href="mainstyle.css">
+    <title>Coffe Bằng Lăng</title>
+</head>
+
+<body>
+    <style>
+         :root {
+            --main-text-font: Arial, Helvetica, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .space-between {
+            justify-content: space-between;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .top {
+            padding: 12px 0;
+            align-items: center;
+            display: block;
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .top.active {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        
+        .top:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        
+        .top-logo {
+            flex: 1;
+        }
+        
+        .top-menu-items {
+            flex: 3;
+        }
+        
+        .top-menu-items>ul {
+            height: 100%;
+            display: flex;
+        }
+        
+        .top-menu-items>ul>li {
+            font-family: var(--main-text-font);
+            padding: 0 12px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .top-menu-items ul li::before {
+            position: absolute;
+            content: "";
+            display: block;
+            width: 100%;
+            height: 50px;
+            bottom: -50%;
+        }
+        
+        .top-menu-items ul li:nth-child(4) {
+            color: red;
+        }
+        
+        .top-menu-items ul li:nth-child(5) {
+            color: red;
+        }
+        
+        .top-menu-item {
+            position: absolute;
+            width: 200px;
+            top: 100px;
+            display: none;
+            opacity: 0;
+            transition: all 0.5s ease;
+            background-color: #ffff;
+            height: auto!important;
+            padding: 6px;
+            border: 1px solid #dddddd;
+        }
+        
+        .top-menu-items ul li:hover .top-menu-item {
+            display: block;
+            top: 60px;
+            opacity: 1;
+        }
+        
+        .top-menu-item li {
+            line-height: 25px;
+            display: flex;
+            justify-content: left!important;
+        }
+        
+        .top-menu-item li a {
+            font-size: 12px;
+            text-align: left;
+            text-transform: capitalize;
+            color: #333;
+            font-family: var(--main-text-font);
+        }
+        /* top-menu-icons */
+        
+        .top-menu-icons {
+            flex: 1;
+        }
+        
+        .top-menu-icons ul {
+            display: flex;
+            height: 100%;
+        }
+        
+        .top-menu-icons ul li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px 12px;
+        }
+        
+        .top-menu-icons ul li {
+            position: relative;
+        }
+        
+        .top-menu-icons ul li::before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 15px;
+            width: 1px;
+            background-color: #333;
+            right: 0;
+        }
+        
+        .top-menu-icons ul li:last-child::before {
+            display: none;
+        }
+        
+        .top-menu-icons ul li:first-child input {
+            width: 150px;
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid #333;
+            padding: 0 0 4px 6px
+        }
+        
+        .top-menu-icons ul li:first-child i {
+            position: absolute;
+            font-size: 12px;
+            right: 12px;
+        }
+        
+        .top-menu-icons ul i {
+            cursor: pointer;
+        }
+        /* ---------------------foooter------------------------------------- */
+        
+        footer {
+            text-align: center;
+        }
+        
+        .footer-top {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            height: 70px;
+        }
+        
+        .footer-top img {
+            height: 50px;
+        }
+        
+        .footer-top li {
+            padding: 0 12px;
+            position: relative;
+        }
+        
+        .footer-top li::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 80%;
+            background: #333;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .footer-top li:last-child::after {
+            display: none;
+        }
+        
+        .footer-top li:last-child a {
+            margin: 12px;
+            color: #ccc;
+        }
+        
+        .footer-text {
+            text-align: center;
+        }
+        
+        .footer-bottom {
+            margin: 20px 0;
+            text-align: center;
+        }
+        /* --------------app-container-------------------------------------- */
+        
+        .app-container {
+            text-align: center;
+            align-items: center;
+            padding: 150px 0 50px 0;
+        }
+        
+        .app-google {
+            margin: 50px;
+        }
+        
+        .app-google img {
+            height: 150px;
+        }
+        
+        .app-container p {
+            line-height: 20px;
+            letter-spacing: 1px;
+            font-size: 17px;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .app-container input {
+            margin-top: 50px;
+            border: none;
+            border-bottom: 1px solid #000;
+            padding-bottom: 20px;
+            width: 400px;
+            text-align: center;
+            outline: none;
+            position: relative;
+        }
+        /* --------------cart-------------------------------------- */
+        
+        .cart {
+            padding: 100px 0;
+        }
+        
+        .cart-top-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #cc11 {
+            background-color: yellow;
+        }
+        
+        .cart-top {
+            height: 2px;
+            width: 70%;
+            background-color: #dddddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 50px 0 100px;
+        }
+        
+        .cart-top-item {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+        
+        .cart-top-item i {
+            color: #dddddd;
+        }
+        
+        .cart-top-cart {
+            border: 1px solid #0DB7EA;
+        }
+        
+        .cart-top-cart i {
+            color: #0DB7EA;
+        }
+        
+        .cart-content-left {
+            flex: 2;
+            padding-left: 12px;
+        }
+        
+        .cart-content-left table {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .cart-content-left table th {
+            padding-bottom: 30px;
+            font-family: var(--main-text-font);
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #333;
+            border-collapse: collapse;
+            border-bottom: 2px solid #dddddd;
+        }
+        
+        .cart-content-left table p {
+            font-family: var(--main-text-font);
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .cart-content-left table input {
+            width: 40px;
+        }
+        
+        .cart-content-left table span {
+            display: block;
+            width: 30px;
+            height: 20px;
+            border: 2px solid #dddddd;
+            cursor: pointer;
+        }
+        
+        .cart-content-left table td {
+            padding: 20px 0;
+            border-bottom: 2px solid #dddddd;
+        }
+        
+        .cart-content-left td:first-child img {
+            width: 130px;
+        }
+        
+        .cart-content-left td:nth-child(2) {
+            max-width: 130px;
+        }
+        
+        .cart-content-left td:nth-child(3) img {
+            width: 30px;
+        }
+        
+        .cart-content-right {
+            flex: 1;
+            padding-left: 12px;
+            border-left: 2px solid #dddddd;
+        }
+        
+        .cart-content-right table {
+            width: 100%;
+        }
+        
+        .cart-content-right th {
+            padding-bottom: 30px;
+            font-family: var(--main-text-font);
+            font-size: 12px;
+            color: #333;
+            border-bottom: 2px solid #dddddd;
+            border-collapse: collapse;
+        }
+        
+        .cart-content-right td {
+            font-family: var(--main-text-font);
+            font-size: 12px;
+            color: #333;
+            padding: 6px 0;
+        }
+        
+        .cart-content-right tr:first-child(4) {
+            border-bottom: 2px solid #dddddd;
+        }
+        
+        .cart-content-right tr td:last-child {
+            text-align: right;
+        }
+        
+        .cart-content-right-text {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .cart-content-right-text p {
+            font-family: var(--main-text-font);
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .cart-content-right-button {
+            text-align: center;
+            align-items: center;
+        }
+        
+        .cart-content-right-button button {
+            padding: 0 18px;
+            height: 35px;
+            cursor: pointer;
+        }
+        
+        .cart-content-right-button button:first-child {
+            background-color: #fff;
+            border: 1px solid #000;
+            margin-right: 20px;
+        }
+        
+        .cart-content-right-button button:first-child:hover {
+            background-color: #dddddd;
+        }
+        
+        .cart-content-right-button button:last-child {
+            background-color: black;
+            color: #dddddd;
+            border: none;
+            border: 1px solid #000;
+        }
+        
+        .cart-content-right-button button:last-child:hover {
+            background-color: #dddddd;
+            color: #000;
+        }
+        
+        .cart-content-right-dangnhap {
+            margin-top: 20px;
+        }
+        
+        .cart-content-right-dangnhap p {
+            font-family: var(--main-text-font);
+            font-size: 12px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        #vcl:hover {
+            background-color: red;
+        }
+        /*------------------------------------------------------------------*/
+        
+        .delivery {
+            padding: 100px 0;
+        }
+        
+        .delivery-top-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .delivery-top {
+            height: 2px;
+            width: 70%;
+            background-color: #dddddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 50px 0 100px;
+        }
+        
+        .delivery-top-item {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #dddddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+        
+        .delivery-top-item i {
+            color: #dddddd;
+        }
+        
+        .delivery-top-adress {
+            border: 1px solid #dddddd;
+        }
+        
+        .delivery-top-adress i {
+            color: #dddddd;
+        }
+        
+        .delivery-content-left {
+            width: 60%;
+            padding-right: 12px;
+        }
+        
+        .delivery-content-left p {
+            font-family: var(--main-text-font);
+            font-size: 12px;
+        }
+        
+        .delivery-content-left label {
+            font-family: var(--main-text-font);
+            font-size: 12px;
+            margin-bottom: 6px;
+            display: block;
+        }
+        
+        .delivery-content-left>p {
+            font-weight: bold;
+        }
+        
+        .delivery-content-left-dangnhap {
+            margin-top: 12px;
+        }
+        
+        .delivery-content-left-dangnhap i {
+            font-size: 12px;
+            margin-right: 12px;
+        }
+        
+        .delivery-content-left-khachle {
+            margin: 12px 0;
+        }
+        
+        .delivery-content-left-khachle input {
+            margin-right: 12px;
+        }
+        
+        .delivery-content-left-dangky {
+            margin-bottom: 30px;
+        }
+        
+        .delivery-content-left-dangky input {
+            margin-right: 12px;
+        }
+        
+        .delivery-content-left-input-top {
+            justify-content: space-between;
+        }
+        
+        .delivery-content-left-input-top-item {
+            width: calc(50% - 12px);
+        }
+        
+        .delivery-content-left-input-top-item input {
+            width: 100%;
+            height: 35px;
+            border: 1px solid #dddddd;
+            padding-left: 6px;
+        }
+        
+        .delivery-content-left-input-bottom input {
+            width: 100%;
+            height: 35px;
+            border: 1px solid #dddddd;
+            padding-left: 6px;
+        }
+        
+        .delivery-content-left-button p {
+            display: inline-block;
+            font-family: var(--main-text-font);
+            font-size: 12px;
+        }
+        
+        .delivery-content-left-button span {
+            margin-right: 12px;
+        }
+        
+        .delivery-content-left-button {
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+        
+        .delivery-content-left-button button {
+            height: 35px;
+            border: 2px solid black;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .delivery-content-left-button button:hover {
+            background-color: black;
+            color: #fff;
+        }
+        
+        .delivery-content-right {
+            width: 40%;
+            padding-left: 12px;
+            border-left: 2px solid #dddddd;
+            height: auto;
+        }
+        
+        .delivery-content-right table {
+            width: 100%;
+            font-family: var(--main-text-font);
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .delivery-content-right table tr th:first-child {
+            text-align: left;
+        }
+        
+        .delivery-content-right table tr th {
+            padding-bottom: 12px;
+            border-bottom: 2px solid #dddddd;
+        }
+        
+        .delivery-content-right table tr th:last-child {
+            text-align: right;
+        }
+        
+        .delivery-content-right table tr td {
+            padding: 6px 0;
+        }
+        
+        .delivery-content-right table tr:nth-child(4) {
+            border-top: 2px solid #dddddd;
+        }
+        
+        .delivery-content-right table tr td:last-child {
+            text-align: right;
+        }
+        
+        .delivery-content-right table tr td:first-child {
+            text-align: left;
+        }
+        
+        #ll1 {
+            background-color: yellow;
+        }
+        /* --------------logo-------------------------------------- */
+    </style>
+    <secsion class="top">
+        <div class="container">
+            <div class="row">
+                <div class="top-logo">
+                    <a href="index.html"><img src="image/logo2-removebg-preview - Copy.png" alt=""></a>
+                </div>
+                <div class="top-menu-items">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="">Shop</a>
+                            <ul class="top-menu-item">
+                                <li>
+                                    <a href="shop-cafe.html">Caffe & Nước trái cây</a>
+                                </li>
+                                <li>
+                                    <a href="shop-cake.html">Bánh ngọt</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li><a href="">Trỏ Chuyện Cùng Cafee sáng</a>
+                            <ul class="top-menu-item">
+                                <li>
+                                    <a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/">Coffe</a>
+                                </li>
+                                <li>
+                                    <a href="../coffebanglang _html/html/bindex.html">Blog</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="top-menu-icons">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="tìm kiếm">
+                            <i class="fas fa-search"></i>
+                        </li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-user"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </secsion>
+    <!-- -------------------------cart------------------ -->
+    <section class="cart">
+        <div class="container">
+            <div class="delivery-top-wrap">
+                <div class="delivery-top">
+                    <div class="delivery-top-delivery delivery-top-item" id="ll1">
+                        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+
+                    </div>
+                    <div class="delivery-top-adress delivery-top-item">
+                        <a href=""><i class="fas fa-map-marker-alt "></i></a>
+                    </div>
+                    <div class="delivery-top-payment delivery-top-item">
+                        <a href=""><i class="fas fa-money-check-alt"></i></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="cart-content row">
+                <div class="cart-content-left">
+                    <table>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Size</th>
+                            <th>Số Lượng</th>
+                            <th>Thành tiền</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tr>
+                            <td><img src="image/sp1.jpg" alt=""></td>
+                            <td>
+                                <p>Sinh tố trái cây</p>
+                            </td>
+                            <td>L</td>
+                            <td><input type="number" value="1" min="1"></td>
+                            <td>
+                                <p>60.000<sub>đ</sub></p>
+                            </td>
+                            <td id="cc">
+                                <span>X</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="image/sp3.jpg" alt=""></td>
+                            <td>
+                                <p>Caffe rang</p>
+                            </td>
+                            <td>L</td>
+                            <td><input type="number" value="1" min="1"></td>
+                            <td>
+                                <p>20.000<sub>đ</sub></p>
+                            </td>
+                            <td>
+                                <span>X</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="image/pl1.jpg" alt=""></td>
+                            <td>
+                                <p>Bánh Flan</p>
+                            </td>
+                            <td>Vừa</td>
+                            <td><input type="number" value="1" min="1"></td>
+                            <td>
+                                <p>30.000<sub>đ</sub></p>
+                            </td>
+                            <td id="cc">
+                                <span>X</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="cart-content-right">
+                    <table>
+                        <tr>
+                            <th colspan="2"> Tổng tiền giỏ hàng
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Tổng sản phẩm</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Tổng tiền hàng</td>
+                            <td>
+                                <p>110.000<sub>đ</sub></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p style="color: #000; font-weight: bold;">Tạm tính</p>
+                            </td>
+                            <td>
+                                <p style="color: #000; font-weight: bold;">110.000<sub>đ</sub></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="cart-content-right-text">
+                        <p>
+                            Voucher free 100% ship cho đơn có giá trị từ 200k trở lên
+                        </p>
+                        <p style="color: red; font-weight: bold;">Sẽ được cộng thêm Voucher giảm giá 5% nếu hoá đơn từ 400k trở lên</p>
+                    </div>
+                    <div class="cart-content-right-button">
+                        <button><a href="shop-cafe.html">Tiếp tục mua sắm</a> </button>
+                        <button>
+                             <a href="giaohang.html">Tiến hành thanh toán</a> </button>
+                    </div>
+                    <div class="cart-content-right-dangnhap">
+                        <p>Tài khoảng </p>
+                        <p>Hãy đăng nhập <a href="">Tài Khoảng</a> để thanh toán</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- -------------------------app-container------------------ -->
+    <section class="app-container">
+        <p>Đặt Hàng Qua Nền Tảng</p>
+        <div class="app-google">
+            <img src="image/ap3.png">&nbsp;
+            <img src="image/ap4.png">&nbsp;
+            <img src="image/ap5.png">&nbsp;
+        </div>
+        <p>Nhận Thông Báo Khuyến Mãi</p>
+        <input type="text" placeholder="Vui Lòng Nhập Gmail Của Bạn ...">
+
+    </section>
+    <!-- -------------------------Footer -->
+    <div class="footer-top">
+        <li>
+            <a href="https://moit.gov.vn/" target="_blank"><img src="image/ap1.png" alt=""></a>
+        </li>
+        <li><a href="https://www.facebook.com/groups/1755109981352922/about" target="_blank">Liên hệ</a></li>
+        <li><a href="https://www.facebook.com/groups/1755109981352922/permalink/1755121731351747/" target="_blank">Tuyển dụng</a></li>
+        <li><a href="https://www.facebook.com/groups/1755109981352922/permalink/1755128611351059/" target="_blank">Giới thiệu</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100071150346233" target="blank"><i class="fab fa-facebook-f"></i></a><a href="https://www.youtube.com/channel/UCPF14dnIoGPbIVn0SLtYjIg" target="blank"><i class="fab fa-youtube"></i></a></li>
+    </div>
+    <div class="footer-text">
+        <p>
+            Quán Caffee Bằng Lăng Kính Chào Các Quý Khách Gần Xa Đã Ghé Thăm Và Ủng Hộ Quán Chúng Tôi ! Xin Chân Thành Cảm Ơn !.<br> Thời Gian Hoạt Động : Thứ 2- Thứ 7 (6h00-23h00). <br> Số Điện Thoại Liên Hệ : <span>037 487 6364.</span>
+        </p>
+    </div>
+    <div class="footer-bottom">
+        @MadeIn Việt Nam.Chất Lượng Cao !
+    </div>
+
+
+    <script src="script.js"></script>
+
+
+</body>
+<script>
+    //------------------------------SLIDER--------------------------
+    const imgItem = document.querySelectorAll(".aspect-ratio-169 img")
+    const imgItemContainer = document.querySelector(".aspect-ratio-169")
+    const dotItem = document.querySelectorAll(".dot")
+    let index = 0;
+    let imgLeng = imgItem.length
+    imgItem.forEach(function(image, index) {
+        image.style.left = index * 100 + "%"
+        dotItem[index].addEventListener("click", function() {
+            slideRun(index)
+        })
+    })
+
+    function slider() {
+        index++;
+        if (index >= imgLeng) {
+            index = 0
+        }
+
+        slideRun(index)
+    }
+
+    function slideRun(index) {
+        imgItemContainer.style.left = "-" + index * 100 + "%"
+        const dotActive = document.querySelector(".active")
+        dotActive.classList.remove("active")
+        dotItem[index].classList.add("active");
+    }
+
+    setInterval(slider, 5000)
+
+    const toP = document.querySelector(".top")
+    window.addEventListener("scroll", function() {
+        const X = this.pageYOffset;
+        if (X > 1) {
+            toP.classList.add("active")
+        } else {
+            toP.classList.remove("active")
+        }
+    })
+</script>
+
+</html>
